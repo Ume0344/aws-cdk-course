@@ -72,3 +72,21 @@ Bootstrap the project by running the following command from root directory of cd
 ```
 cdk bootstrap
 ```
+
+## Deploy a basic CDK app
+To synthesize;
+```
+cdk synth
+```
+
+To deploy;
+```
+cdk deploy
+```
+
+## CDK Constructs
+L1 - CloudFormation resources
+L2 - Abstraction over L1 constructs. i.e, aws-s3.Bucket
+L3 - Patterns that combine different aws resources together and developer can use it to deploy an entire aws architecture. i.e, *The ecsPatterns.ApplicationLoadBalancedFargateService class is an example of an L3 construct that represents an AWS Fargate service running on an Amazon Elastic Container Service (Amazon ECS) cluster and fronted by an application load balancer.*
+
+<img src="constructs.png" alt="drawing" width="500"/>
