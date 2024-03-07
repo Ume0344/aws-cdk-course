@@ -62,3 +62,13 @@ Create a cdk project through terminal, run to initialize it;
 ```
 cdk init
 ```
+
+## Bootstraping the CDK project
+*Bootstrapping is the process of preparing an environment for deployment. Bootstrapping is a one-time action that you must perform for every environment that you deploy resources into.*
+
+Bootstraping will create resources needed to deploy AWS CDK apps into this environment.
+
+Bootstrap the project by running the following command from root directory of cdk project;
+```
+cdk bootstrap
+```
