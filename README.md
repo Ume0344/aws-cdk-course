@@ -90,3 +90,12 @@ L2 - Abstraction over L1 constructs. i.e, aws-s3.Bucket
 L3 - Patterns that combine different aws resources together and developer can use it to deploy an entire aws architecture. i.e, *The ecsPatterns.ApplicationLoadBalancedFargateService class is an example of an L3 construct that represents an AWS Fargate service running on an Amazon Elastic Container Service (Amazon ECS) cluster and fronted by an application load balancer.*
 
 <img src="constructs.png" alt="drawing" width="500"/>
+
+## [Cfn Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html#parameters-about)
+CloudFormation Parameters allow definining the variables at deployment time. It is used to make CF templates more widely used accroding to different teams' requirements.
+
+To use the parameter at cdk deployment time;
+```
+cdk deploy --parameters <parameter_name>=<parameter_value>
+cdk deploy --parameters duration=1 # forexample
+```
