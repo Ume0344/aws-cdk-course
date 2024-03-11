@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+import { TestingStack } from '../lib/testing-stack';
 import { CdkProjectStack } from '../lib/cdk-project-stack';
 
 const app = new cdk.App();
@@ -19,3 +20,5 @@ new CdkProjectStack(app, 'CdkProjectStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+new TestingStack(app, 'TestingStack', {});
