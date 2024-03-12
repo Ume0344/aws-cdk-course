@@ -99,3 +99,14 @@ To use the parameter at cdk deployment time;
 cdk deploy --parameters <parameter_name>=<parameter_value>
 cdk deploy --parameters duration=1 # forexample
 ```
+
+## Destroy a cdk stack
+```
+cdk destroy <stack_name>
+```
+
+## CDK Id's
+**Logical Ids** - Used by CDK.
+**Physical Ids** - Used by AWS.
+
+It is recommended not to change the logical and physical ids. If we ever want to change the logical id, use 'overrideLogicalId' function.
