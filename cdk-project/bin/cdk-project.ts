@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
 
-import { CdkProjectStack } from '../lib/misc./cdk-project-stack';
+import { LambdaStack } from '../lib/infra/LambdaStack';
 
 const app = new cdk.App();
-new CdkProjectStack(app, 'CdkProjectStack', {});
+new LambdaStack(app, 'LambdaStack', {});
