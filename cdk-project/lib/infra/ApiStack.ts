@@ -3,6 +3,8 @@ import { Construct } from 'constructs';
 import * as apiGateway from 'aws-cdk-lib/aws-apigateway'
 
 interface ApiStackProps extends StackProps {
+  // api gateway lambda proxy integration to pass the query string
+  // parameters of api-gateway url to lambda's event argument.
   helloLambdaIntegration: apiGateway.LambdaIntegration
 }
 export class ApiStack extends Stack {
