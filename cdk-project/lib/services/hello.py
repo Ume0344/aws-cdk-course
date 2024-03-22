@@ -1,5 +1,6 @@
 ## create a python lambda which prints the hello
 import json
+import os
 
 def lambda_handler(event , context):
     first_name = ""
@@ -14,7 +15,7 @@ def lambda_handler(event , context):
                 event['queryStringParameters']['last_name'] is not None):
             first_name = event['queryStringParameters']['first_name']
             last_name = event['queryStringParameters']['last_name']
-            message = 'Hello {} {}!'.format(first_name, last_name)
+            message = 'Hi, {} {}. Your dynamodb table name is: {}!'.format(first_name, last_name, os.environ['Hello_DB_Table'])
             error = "nil"
             status_code = 200
     except KeyError:

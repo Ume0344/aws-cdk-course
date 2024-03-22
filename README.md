@@ -112,7 +112,7 @@ cdk destroy <stack_name>
 It is recommended not to change the logical and physical ids. If we ever want to change the logical id, use 'overrideLogicalId' function.
 
 ## CloudFormation Intrinsic Functions
-[Intrinsic functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html) are the cloudformation builtin functions to manage the stacks. These are used to assign values to properties which are only available at runtime. For example, we want to use stack id of a stack but it is not avaialable at compile time, so we can use fn.split() pr fn.select() functions to parse the stack id of current stack. 
+[Intrinsic functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html) are the cloudformation builtin functions to manage the stacks. These are used to assign values to properties which are only available at runtime. For example, we want to use stack id of a stack but it is not avaialable at compile time, so we can use fn.split() or fn.select() functions to parse the stack id of current stack.
 
 ## Stack resources cross-references
 **[Option1](https://github.com/alexhddev/CDK-course-resources/commit/a3a644661f3019453ef1540ddc45bbc640b7fe31)**: To use the resources of one stack in anohter stack, first we export a resource information using `CnfOutput` with `exportName` fucntions;
