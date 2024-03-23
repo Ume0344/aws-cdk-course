@@ -5,7 +5,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apiGateway from 'aws-cdk-lib/aws-apigateway';
 import { ITable } from 'aws-cdk-lib/aws-dynamodb';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { AllowListReceiptFilter } from 'aws-cdk-lib/aws-ses';
+
 
 interface LambdaStackProps extends StackProps {
   helloTable: ITable

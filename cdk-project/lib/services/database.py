@@ -15,8 +15,28 @@ class DynamoDB:
 
         try:
             table = self.dynamodb.Table(table_name)
-            print (table.creation_date_time)
         except exceptions.ClientError as err:
             print(err)  
-        return  table
-        
+        return table
+
+    def post_message_by_id(self, table_name: str, message: str, id: str):
+        """
+        Post the message in dynamodb table after creating an id.
+        param db: DynamoDB class reference.
+        param table: Name of dynamodb table.
+        param message: Message to be posted.
+        returns: Nil
+        """
+        post_success = False
+        table = self.dynamodb.Table(table_name)
+        try:
+            table.put_item(Item={
+                'id': id,
+                'message': message,
+                })
+            post_success = True
+        except exceptions.ClientError as err:
+            print(err)
+            post_success = False
+
+        return post_success

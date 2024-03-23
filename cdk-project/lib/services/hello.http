@@ -1,1 +1,8 @@
 GET https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?first_name=Um e&last_name=Habiba
+###
+
+POST https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello
+Content-Type: application/json
+
+{"message": "hi from mac"}
+###
