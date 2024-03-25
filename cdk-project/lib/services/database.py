@@ -56,3 +56,23 @@ class DynamoDB:
             print(err)
 
         return table_items
+    
+    def get_message_by_id(self, table_name: str, id: str):
+        """
+        Get all the messages in dynamodb table.
+        param table: Name of dynamodb table.
+        param id: Id of message to be retrieved
+        returns: All the messages in Dyanmodb table.
+        """
+        table_item = {}
+        try:
+            table = self.dynamodb.Table(table_name)
+            response = table.get_item(
+                Key={"id": id}
+                )
+            
+            table_item = response['Item']
+        except exceptions.ClientError as err:
+            print(err)
+
+        return table_item

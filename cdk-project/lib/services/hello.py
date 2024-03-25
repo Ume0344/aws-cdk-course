@@ -14,14 +14,19 @@ def lambda_handler(event, context):
     table_name = os.environ['Hello_DB_Table']
 
     print(f"Table name from enviroment of Lambda is {table_name}")
-
+    print(event)
     try:
         if event["httpMethod"] is not None:
             http_method = event["httpMethod"]
+            query_string_parameter = event['queryStringParameters']
+
             status_code = 200
 
             if http_method == "GET":
-                message = get_hello_message(db, table_name)
+                if query_string_parameter is not None:
+                    message = get_message_by_id(db, table_name, query_string_parameter['id'])
+                else: 
+                    message = get_all_messages(db, table_name)
 
             elif http_method == "POST":
                 success = post_message(db, table_name, event["body"])
@@ -46,12 +51,12 @@ def lambda_handler(event, context):
         }
 
 
-def get_hello_message(db: DynamoDB, table_name: str):
+def get_all_messages(db: DynamoDB, table_name: str):
     """
-    Get the table creation date.
+    Get all the messages.
     param db: DynamoDB class reference.
     param table_name: Name of dynamodb table.
-    returns: table creation date in string.
+    returns: All the messages in table.
     """
     messages = db.get_all_messages(table_name=table_name)
     return messages
@@ -74,3 +79,13 @@ def post_message(db: DynamoDB, table_name: str, event_body):
         print("No message attribute is found inside body of request.")
 
     return success
+
+def get_message_by_id(db: DynamoDB, table_name: str, id: str):
+    """
+    Get a message by id.
+    param db: DynamoDB class reference.
+    param table_name: Name of dynamodb table.
+    returns: A message.
+    """
+    message = db.get_message_by_id(table_name=table_name, id=id)
+    return message
