@@ -76,3 +76,30 @@ class DynamoDB:
             print(err)
 
         return table_item
+    
+    def update_message_by_id(self, table_name: str, id: str, updated_message: str):
+        """
+        Update the message by id.
+        param table_name: Name of dynamodb table.
+        param updated_message: Updated message.
+        param id: Id (primary key) of the message.
+        returns update_success: Dyanmodb update item request's success status(true|false)
+        """
+        update_success = False
+        table = self.dynamodb.Table(table_name)
+        try:
+            table.update_item(
+                Key={
+                    'id': id
+                    },
+                UpdateExpression='SET message = :updated_message',
+                ExpressionAttributeValues={
+                    ':updated_message': updated_message
+                    }
+                )
+            update_success = True
+        except exceptions.ClientError as err:
+            print(err)
+            update_success = False
+
+        return update_success
