@@ -31,10 +31,6 @@ def lambda_handler(event, context):
             elif http_method == "POST":
                 success = post_message(db, table_name, event["body"])
                 message = f"Success on posting message to dynamodb table: {success}"
-            
-            elif http_method == "PUT":
-                success = update_message(db, table_name, event)
-                message = f"Success on updating message: {success}"
 
             else:
                 message = "No http method is defined in request"
@@ -72,7 +68,7 @@ def post_message(db: DynamoDB, table_name: str, event_body):
     param db: DynamoDB class reference.
     param table: Name of dynamodb table.
     param event_body: Body containing message to be posted.
-    returns: success of the post request's status
+    returns: nil
     """
     try:
         parsed_body = json.loads(event_body)
@@ -93,21 +89,3 @@ def get_message_by_id(db: DynamoDB, table_name: str, id: str):
     """
     message = db.get_message_by_id(table_name=table_name, id=id)
     return message
-
-def update_message(db: DynamoDB, table_name: str, event):
-    """
-    Parse the bosy of http request and call database to update message.
-    param db: DynamoDB class reference.
-    param table: Name of dynamodb table.
-    param event: Event triggering the lambda.
-    returns: Success status of update request
-    """
-    try:
-        parsed_body = json.loads(event['body'])
-        body_message = parsed_body["updated_message"]
-        id = event['queryStringParameters']['id']
-        success = db.update_message_by_id(table_name=table_name, id=id, updated_message=body_message)
-    except KeyError:
-        print("No updated_message attribute is found inside body of request.")
-
-    return success

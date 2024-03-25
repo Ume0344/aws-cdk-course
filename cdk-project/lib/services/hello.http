@@ -4,14 +4,8 @@ GET https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello
 POST https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello
 Content-Type: application/json
 
-{"message": "hi from goodie"}
+{"message": "hi from mac"}
 ###
 
 GET https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?id=deac4c9e-867c-4b1b-895b-b72dc951bb60
-###
-
-PUT https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?id=deac4c9e-867c-4b1b-895b-b72dc951bb60
-Content-Type: application/json
-
-{"updated_message": "bye to zellescherweg"}
 ###
