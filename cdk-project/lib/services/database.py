@@ -70,8 +70,10 @@ class DynamoDB:
             response = table.get_item(
                 Key={"id": id}
                 )
-            
-            table_item = response['Item']
+            if 'Item' not in response:
+                print(f"The requested item with id={id} does not exist in table")
+            else:
+                table_item = response['Item']
         except exceptions.ClientError as err:
             print(err)
 
@@ -103,3 +105,23 @@ class DynamoDB:
             update_success = False
 
         return update_success
+
+    def delete_message_by_id(self, table_name: str, id: str):
+        """
+        Delete a message by id.
+        param table: Name of dynamodb table.
+        param id: Id of message to be deleted
+        returns: Success status of deleting the message
+        """
+        success = False
+        try:
+            table = self.dynamodb.Table(table_name)
+            table.delete_item(
+                Key={"id": id}
+                
+                )
+            success = True
+        except exceptions.ClientError as err:
+            print(err)
+
+        return success

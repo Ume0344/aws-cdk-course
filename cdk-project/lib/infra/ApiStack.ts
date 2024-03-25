@@ -17,5 +17,6 @@ export class ApiStack extends Stack {
     helloResource.addMethod('GET', props.helloLambdaIntegration);
     helloResource.addMethod('POST', props.helloLambdaIntegration);
     helloResource.addMethod('PUT', props.helloLambdaIntegration);
+    helloResource.addMethod('DELETE', props.helloLambdaIntegration);
   }
 }

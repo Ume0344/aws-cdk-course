@@ -36,11 +36,15 @@ def lambda_handler(event, context):
                 success = update_message(db, table_name, event)
                 message = f"Success on updating message: {success}"
 
+            elif http_method == "DELETE":
+                success = delete_message(db, table_name, query_string_parameter['id'])
+                message = f"Success on delete message: {success}"
+
             else:
                 message = "No http method is defined in request"
                 status_code = 400
-    except KeyError:
-        error = "No http method attribute found in the lambda event"
+    except KeyError as err:
+        error = f"Key Error because of {err} attribute does not exist in response"
         status_code = 400
 
     response = {
@@ -110,4 +114,15 @@ def update_message(db: DynamoDB, table_name: str, event):
     except KeyError:
         print("No updated_message attribute is found inside body of request.")
 
+    return success
+
+def delete_message(db: DynamoDB, table_name: str, id: str):
+    """
+    Delete a message by id.
+    param db: DynamoDB class reference.
+    param table_name: Name of dynamodb table.
+    param id: Id to message to be deleted
+    returns: Success status of deleting the message.
+    """
+    success = db.delete_message_by_id(table_name=table_name, id=id)
     return success
