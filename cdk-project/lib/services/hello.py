@@ -53,10 +53,8 @@ def get_hello_message(db: DynamoDB, table_name: str):
     param table_name: Name of dynamodb table.
     returns: table creation date in string.
     """
-    table = db.get_table(table_name=table_name)
-    table_creation = table.creation_date_time
-
-    return (table_creation.strftime("%H:%M:%S"))
+    messages = db.get_all_messages(table_name=table_name)
+    return messages
 
 
 def post_message(db: DynamoDB, table_name: str, event_body):

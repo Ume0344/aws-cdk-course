@@ -22,10 +22,10 @@ class DynamoDB:
     def post_message_by_id(self, table_name: str, message: str, id: str):
         """
         Post the message in dynamodb table after creating an id.
-        param db: DynamoDB class reference.
-        param table: Name of dynamodb table.
+        param table_name: Name of dynamodb table.
         param message: Message to be posted.
-        returns: Nil
+        param id: Id (primary key) of the message.
+        returns post_success: Dyanmodb put item request's success status(true|false)
         """
         post_success = False
         table = self.dynamodb.Table(table_name)
@@ -40,3 +40,19 @@ class DynamoDB:
             post_success = False
 
         return post_success
+    
+    def get_all_messages(self, table_name: str):
+        """
+        Get all the messages in dynamodb table.
+        param table: Name of dynamodb table.
+        returns: All the messages in Dyanmodb table.
+        """
+        table_items = []
+        try:
+            table = self.dynamodb.Table(table_name)
+            response = table.scan()
+            table_items = response['Items']
+        except exceptions.ClientError as err:
+            print(err)
+
+        return table_items
