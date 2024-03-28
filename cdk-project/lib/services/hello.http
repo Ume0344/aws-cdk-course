@@ -1,19 +1,26 @@
-GET https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello
+@token = eyJraWQiOiIxRFUxSDVzZVVkcU9QTG9CUW5uTEJQOWFTdHFZRytzV1g1cml4NW5KdStVPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiMjQ5MTZmMDUtOWIzOS00Mzk5LWI5ODUtNTA3YzE5NTM2N2JhIiwic3ViIjoiNGJmNjgxOGItNDhmYi00ODVjLWFhYzYtNTNkMjBhYjdlZTdhIiwiYXVkIjoiNWk4amM3cHA3cWwzdm9xbDQzbWViYTRybXEiLCJldmVudF9pZCI6IjQxNTI4MWRkLWRiNmMtNGVlNi1hNGQxLWYwMWQzNjc3MTlhOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNzExNjQyODYzLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtY2VudHJhbC0xLmFtYXpvbmF3cy5jb21cL2V1LWNlbnRyYWwtMV9NcmhoeHU1QUwiLCJjb2duaXRvOnVzZXJuYW1lIjoiYnViYmxlIiwiZXhwIjoxNzExNjQ2NDYzLCJpYXQiOjE3MTE2NDI4NjMsImp0aSI6IjlhYzRjMDhjLTUzM2QtNDQwZi1hOGE5LWMwOWEzZDQ0NDg2NCJ9.xRmnIr6FC3FkLCxHmQDZWeOYPh0BBjFEMngvnUTlYder9FAv0qIQONS_IbLHkBUkmoaqGNt2OPqm_R_wjn-5ZXdqM20vTDXDZmWyQOYwWMXsgl1AG4J51hVBuiLdrKP0IZpuOivnjfm6evr7yd6zOzEjvy2tehkkhPKTnzXLMpeVQh6D_k6LMXs9HDUOWWdftsyjFkK8QmTzcKtTkC4Y3iYCK52fxzkdJNj7UENq1FEn2ELXPMgVvKvupge0K3ivwamhcpHT_1iRofhfwZM6uirS2-2AkObzooUtEF6iX26gyx2idT8Kwqs7ErniDOnA9uT1-0weq5785ttJghE1Tw
+@url = https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod
+GET {{url}}/hello
+Authorization: {{token}}
 ###
 
-POST https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello
+POST {{url}}/hello
 Content-Type: application/json
+Authorization: {{token}}
 
-{"message": "hi from goodie"}
+{"message": "hi from slub"}
 ###
 
-GET https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?id=deac4c9e-867c-4b1b-895b-b72dc951bb60
+GET {{url}}/hello?id=df599a1d-d5d9-4493-98a5-916bec79f31c
+Authorization: {{token}}
 ###
 
-PUT https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?id=deac4c9e-867c-4b1b-895b-b72dc951bb60
+PUT {{url}}/hello?id=df599a1d-d5d9-4493-98a5-916bec79f31c
 Content-Type: application/json
+Authorization: {{token}}
 
-{"updated_message": "bye to zellescherweg"}
+{"updated_message": "bye to slub"}
 ###
 
-DELETE https://clwts403p6.execute-api.eu-central-1.amazonaws.com/prod/hello?id=2
+DELETE {{url}}/hello?id=deac4c9e-867c-4b1b-895b-b72dc951bb60
+Authorization: {{token}}
